@@ -1,0 +1,20 @@
+title: THINKING MFA Verification Failures
+id: 8894c2a5-5be9-49d2-9429-3aab5a50858f
+status: experimental
+description: Detects repeated rejected MFA checks in THINKING EEG Platform audit telemetry.
+author: Techwaves EGY
+date: 2026-09-21
+logsource:
+  product: thinking-eeg
+  service: api
+detection:
+  selection:
+    event_type: mfa_verification_failed
+  condition: selection | count(correlation_id) by user_sub > 4
+  timeframe: 5m
+falsepositives:
+  - User mistyping an authenticator value
+level: high
+tags:
+  - attack.credential_access
+  - attack.t1110

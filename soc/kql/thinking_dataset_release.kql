@@ -1,0 +1,12 @@
+// THINKING Dataset Release Failures
+// Author: Techwaves EGY
+// Product: thinking-eeg
+ThinkingEegAudit
+| where event_type in (
+    "dataset_release_verification_failed",
+    "dataset_inventory_reconciliation_failed",
+    "dataset_upload_blocked"
+)
+| summarize EventCount=count(), CorrelationIds=make_set(correlation_id) by bin(timestamp, 15m), user_sub, dataset_id, event_type
+| where EventCount > 2
+| extend severity="high"

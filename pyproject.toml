@@ -1,0 +1,45 @@
+[project]
+name = "thinking-eeg"
+version = "0.2.0"
+description = "THINKING — EEG Semantic Anchors Platform (Phases 2-4)"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi==0.141.1",
+    "uvicorn[standard]==0.34.0",
+    "pydantic==2.13.4",
+    "pydantic-settings==2.14.2",
+    "numpy==1.26.4",
+    "jsonschema==4.26.0",
+    "PyJWT==2.13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.4",
+    "pytest-asyncio==0.24.0",
+    "httpx==0.28.1",
+]
+ml = [
+    "torch>=2.10.0",
+    "mne==1.7.1",
+    "autoreject==0.4.3",
+    "pyarrow>=23.0.1",
+    "scikit-learn==1.5.2",
+    "scipy==1.12.0",
+    "anthropic==0.120.2",
+]
+security = [
+    "hvac==2.3.0",
+    "pyotp==2.9.0",
+    "cyclonedx-python-lib==11.12.0",
+    "cyclonedx-bom==7.4.0",
+    "pip-audit==2.10.1",
+    "redis==5.0.8",
+]
+data = [
+    "huggingface_hub==0.36.2",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

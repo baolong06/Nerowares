@@ -1,0 +1,21 @@
+title: THINKING Invalid JWT Rejections
+id: 8151a3d0-a3cc-49ea-bbe6-9be7052319e3
+status: experimental
+description: Detects bursts of unauthorized requests, including malformed or expired JWTs.
+author: Techwaves EGY
+date: 2026-09-21
+logsource:
+  product: thinking-eeg
+  service: api
+detection:
+  selection:
+    event_type: api_request
+    status: 401
+  condition: selection | count(correlation_id) by user_sub > 20
+  timeframe: 5m
+falsepositives:
+  - Misconfigured client token refresh
+level: high
+tags:
+  - attack.credential_access
+  - attack.t1078

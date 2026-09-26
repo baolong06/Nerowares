@@ -1,0 +1,5 @@
+index=thinking_eeg event_type IN (dataset_release_verification_failed, dataset_inventory_reconciliation_failed, dataset_upload_blocked)
+| bin _time span=15m
+| stats count values(correlation_id) AS correlation_ids by _time, user_sub, dataset_id, event_type
+| where count > 2
+| eval severity="high", action="Investigate repeated dataset release verification, inventory mismatch, or governance-blocked publication."

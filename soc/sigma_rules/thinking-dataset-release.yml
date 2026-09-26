@@ -1,0 +1,23 @@
+title: THINKING Dataset Release Failures
+id: c3e8f1a2-4b7d-4c9e-8a1f-6d2b9e0c5a74
+status: experimental
+description: Detects repeated dataset_release_verification_failed, dataset_inventory_reconciliation_failed, and dataset_upload_blocked events in THINKING EEG Platform audit telemetry.
+author: Techwaves EGY
+date: 2026-09-25
+logsource:
+  product: thinking-eeg
+  service: api
+detection:
+  selection:
+    event_type:
+      - dataset_release_verification_failed
+      - dataset_inventory_reconciliation_failed
+      - dataset_upload_blocked
+  condition: selection | count(correlation_id) by user_sub > 2
+  timeframe: 15m
+falsepositives:
+  - Operator retries after a local inventory mismatch
+level: high
+tags:
+  - attack.impact
+  - attack.t1565

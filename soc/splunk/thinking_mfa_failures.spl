@@ -1,0 +1,5 @@
+index=thinking_eeg event_type=mfa_verification_failed
+| bin _time span=5m
+| stats count values(correlation_id) AS correlation_ids by _time, tenant_id, user_sub
+| where count > 4
+| eval severity="high", action="Investigate credential stuffing or MFA fatigue; invalidate affected sessions."

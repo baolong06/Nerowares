@@ -1,0 +1,25 @@
+{
+  "dataset_id": "bciciv2a",
+  "format": "csv",
+  "labels": [
+    "left",
+    "right",
+    "foot",
+    "tongue"
+  ],
+  "n_channels_source": 22,
+  "n_times_source": 201,
+  "provider": "local",
+  "repo_id": null,
+  "revision": "local-bciciv2a-2026-09-24",
+  "sampling_rate_hz": 250.0,
+  "session_field": "epoch",
+  "shards": [
+    {
+      "path": "kaggle/aymanmostafa11__eeg-motor-imagery-bciciv-2a/BCICIV_2a_all_patients.csv",
+      "sha256": "fa52c442278b63c9add50939b453f0668719ff1137dd596b5b1cac90fe3aa6cd",
+      "size_bytes": 214848010
+    }
+  ],
+  "subject_field": "patient"
+}

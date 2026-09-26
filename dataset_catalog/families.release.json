@@ -1,0 +1,545 @@
+{
+  "schema_version": 1,
+  "release_id": "thinking-direct-family-observed-v1",
+  "canonical_exclusions": [
+    {
+      "repo_id": "madteam/thinking-bciciv2a",
+      "revision": "1cd0deae08404efd86bf6b84d6beb2575c245a5e",
+      "reason": "existing canonical BCICIV-2a CSV release; do not overwrite"
+    }
+  ],
+  "D01": {
+    "dataset_id": "D01",
+    "name": "Thinking Out Loud Inner Speech",
+    "release_id": "thinking-d01-observed-v1",
+    "local_root": "openneuro/ds003626_inner_speech",
+    "repo_id": "madteam/thinking-d01",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "OpenNeuro ds003626",
+    "provenance_references": [
+      "https://openneuro.org/datasets/ds003626"
+    ],
+    "expected_source_files": 187,
+    "expected_source_bytes": 26828585815,
+    "observed_local_files": 187,
+    "observed_local_bytes": 26828585815,
+    "license_note": "OpenNeuro public BIDS dataset; family redistribution has not been independently re-verified for this release",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "other",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D02": {
+    "dataset_id": "D02",
+    "name": "COFETT",
+    "release_id": "thinking-d02-observed-v1",
+    "local_root": "openneuro/ds006317_cofett",
+    "repo_id": "madteam/thinking-d02",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "OpenNeuro ds006317",
+    "provenance_references": [
+      "https://openneuro.org/datasets/ds006317"
+    ],
+    "expected_source_files": 335,
+    "expected_source_bytes": 56822054895,
+    "observed_local_files": 335,
+    "observed_local_bytes": 56822054895,
+    "license_note": "OpenNeuro public dataset; family redistribution has not been independently re-verified for this release",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "other",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D03": {
+    "dataset_id": "D03",
+    "name": "Chisco Chinese Imagined Speech",
+    "release_id": "thinking-d03-observed-v1",
+    "local_root": "openneuro/ds005170_chisco_subject02",
+    "repo_id": "madteam/thinking-d03",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "OpenNeuro ds005170 subject 02 plus metadata and text materials",
+    "provenance_references": [
+      "https://openneuro.org/datasets/ds005170"
+    ],
+    "expected_source_files": 94,
+    "expected_source_bytes": 16755215895,
+    "observed_local_files": 94,
+    "observed_local_bytes": 16755215895,
+    "license_note": "Observed Chisco subject-02 package only; never a full-upstream claim. Paper notes CC0; family redistribution has not been independently re-verified for this release",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "other",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D04": {
+    "dataset_id": "D04",
+    "name": "EEG-to-Text Preprocessed ZuCo",
+    "release_id": "thinking-d04-observed-v1",
+    "local_root": "huggingface/EEG-To-Text_Preprocessed",
+    "repo_id": "madteam/thinking-d04",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Hugging Face pyinglie/EEG-To-Text_Preprocessed",
+    "provenance_references": [
+      "https://huggingface.co/datasets/pyinglie/EEG-To-Text_Preprocessed"
+    ],
+    "expected_source_files": 9,
+    "expected_source_bytes": 5111299297,
+    "observed_local_files": 9,
+    "observed_local_bytes": 5111299297,
+    "license_note": "Repository card requires verification before redistribution",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "unknown",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D05": {
+    "dataset_id": "D05",
+    "name": "EEG Semantic Text Relevance",
+    "release_id": "thinking-d05-observed-v1",
+    "local_root": "huggingface/EEG-semantic-text-relevance",
+    "repo_id": "madteam/thinking-d05",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Hugging Face Quoron/EEG-semantic-text-relevance",
+    "provenance_references": [
+      "https://huggingface.co/datasets/Quoron/EEG-semantic-text-relevance"
+    ],
+    "expected_source_files": 27,
+    "expected_source_bytes": 11928213255,
+    "observed_local_files": 27,
+    "observed_local_bytes": 11928213255,
+    "license_note": "Apache-2.0 according to Hugging Face data card; card is not independent redistribution evidence",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "other",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D06": {
+    "dataset_id": "D06",
+    "name": "EEG Image CVPR All Subjects",
+    "release_id": "thinking-d06-observed-v1",
+    "local_root": "huggingface/EEG_Image_CVPR_ALL_subj",
+    "repo_id": "madteam/thinking-d06",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Hugging Face luigi-s/EEG_Image_CVPR_ALL_subj",
+    "provenance_references": [
+      "https://huggingface.co/datasets/luigi-s/EEG_Image_CVPR_ALL_subj"
+    ],
+    "expected_source_files": 12,
+    "expected_source_bytes": 1705330595,
+    "observed_local_files": 12,
+    "observed_local_bytes": 1705330595,
+    "license_note": "Repository card and original dataset license require verification before redistribution",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "unknown",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D07": {
+    "dataset_id": "D07",
+    "name": "Kumar Imagined Speech",
+    "release_id": "thinking-d07-observed-v1",
+    "local_root": "kaggle/ignazio__kumars-eeg-imagined-speech",
+    "repo_id": "madteam/thinking-d07",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Kaggle ignazio/kumars-eeg-imagined-speech",
+    "provenance_references": [
+      "https://www.kaggle.com/datasets/ignazio/kumars-eeg-imagined-speech"
+    ],
+    "expected_source_files": null,
+    "expected_source_bytes": 22954373,
+    "observed_local_files": 691,
+    "observed_local_bytes": 92079395,
+    "license_note": "Kaggle mirror; license unknown; redistribution should be avoided",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "unknown",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D08": {
+    "dataset_id": "D08",
+    "name": "Imagined Speech EEG Dataset",
+    "release_id": "thinking-d08-observed-v1",
+    "local_root": "kaggle/hanifai__eeg-dataset",
+    "repo_id": "madteam/thinking-d08",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Kaggle hanifai/eeg-dataset",
+    "provenance_references": [
+      "https://www.kaggle.com/datasets/hanifai/eeg-dataset"
+    ],
+    "expected_source_files": null,
+    "expected_source_bytes": 128053782,
+    "observed_local_files": 20,
+    "observed_local_bytes": 318617720,
+    "license_note": "Apache-2.0 according to Kaggle data card; card is not independent redistribution evidence",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "other",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D09": {
+    "dataset_id": "D09",
+    "name": "BCI2020 Imagined Speech",
+    "release_id": "thinking-d09-observed-v1",
+    "local_root": "kaggle/abdulkareembageri__imagined-speech-eeg-signal-bci2020",
+    "repo_id": "madteam/thinking-d09",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Kaggle mirror of OSF pq7vb Track 3",
+    "provenance_references": [
+      "https://www.kaggle.com/datasets/abdulkareembageri/imagined-speech-eeg-signal-bci2020",
+      "https://osf.io/pq7vb/"
+    ],
+    "expected_source_files": null,
+    "expected_source_bytes": 2325016698,
+    "observed_local_files": 46,
+    "observed_local_bytes": 2325595239,
+    "license_note": "CC BY 4.0 according to data card; original source is OSF pq7vb; card is not independent redistribution evidence",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "other",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D10": {
+    "dataset_id": "D10",
+    "name": "P300 Sampling Dataset",
+    "release_id": "thinking-d10-observed-v1",
+    "local_root": "kaggle/rramele__p300samplingdataset",
+    "repo_id": "madteam/thinking-d10",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Kaggle rramele/p300samplingdataset",
+    "provenance_references": [
+      "https://www.kaggle.com/datasets/rramele/p300samplingdataset"
+    ],
+    "expected_source_files": null,
+    "expected_source_bytes": 323291159,
+    "observed_local_files": 9,
+    "observed_local_bytes": 325925507,
+    "license_note": "CC0-1.0 according to Kaggle data card; card is not independent redistribution evidence",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "other",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D11": {
+    "dataset_id": "D11",
+    "name": "P300 ALS EEG",
+    "release_id": "thinking-d11-observed-v1",
+    "local_root": "kaggle/page0526__eeg-p300-als",
+    "repo_id": "madteam/thinking-d11",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Kaggle page0526/eeg-p300-als",
+    "provenance_references": [
+      "https://www.kaggle.com/datasets/page0526/eeg-p300-als"
+    ],
+    "expected_source_files": null,
+    "expected_source_bytes": 172696120,
+    "observed_local_files": 9,
+    "observed_local_bytes": 172688795,
+    "license_note": "License marked unknown on Kaggle; verify original study terms before redistribution",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "unknown",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D12": {
+    "dataset_id": "D12",
+    "name": "Steady-State Visual Evoked Potential Signals",
+    "release_id": "thinking-d12-observed-v1",
+    "local_root": "kaggle/girgismicheal__steadystate-visual-evoked-potential-signals",
+    "repo_id": "madteam/thinking-d12",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Kaggle girgismicheal/steadystate-visual-evoked-potential-signals",
+    "provenance_references": [
+      "https://www.kaggle.com/datasets/girgismicheal/steadystate-visual-evoked-potential-signals"
+    ],
+    "expected_source_files": null,
+    "expected_source_bytes": 24477916,
+    "observed_local_files": 97,
+    "observed_local_bytes": 142728759,
+    "license_note": "Copyright retained by authors according to data card",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "other",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D13": {
+    "dataset_id": "D13",
+    "name": "San Diego SSVEP",
+    "release_id": "thinking-d13-observed-v1",
+    "local_root": "kaggle/lzyuuu__ssvep-sandiego",
+    "repo_id": "madteam/thinking-d13",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Kaggle lzyuuu/ssvep-sandiego",
+    "provenance_references": [
+      "https://www.kaggle.com/datasets/lzyuuu/ssvep-sandiego"
+    ],
+    "expected_source_files": null,
+    "expected_source_bytes": 114738607,
+    "observed_local_files": 21,
+    "observed_local_bytes": 114700871,
+    "license_note": "License marked other on Kaggle data card",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "other",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D14": {
+    "dataset_id": "D14",
+    "name": "Dual-Paradigm SSVEP and Motor Imagery",
+    "release_id": "thinking-d14-observed-v1",
+    "local_root": "kaggle/yuankunchen0001__dual-paradigm-ssvep-and-motor-imagery-eeg-dataset",
+    "repo_id": "madteam/thinking-d14",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Kaggle yuankunchen0001/dual-paradigm-ssvep-and-motor-imagery-eeg-dataset",
+    "provenance_references": [
+      "https://www.kaggle.com/datasets/yuankunchen0001/dual-paradigm-ssvep-and-motor-imagery-eeg-dataset"
+    ],
+    "expected_source_files": null,
+    "expected_source_bytes": 556648742,
+    "observed_local_files": 165,
+    "observed_local_bytes": 826702367,
+    "license_note": "CC BY-NC-ND 4.0 according to Kaggle data card; non-derivative redistribution remains unresolved",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "other",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D15": {
+    "dataset_id": "D15",
+    "name": "BCI Competition IV 2a",
+    "release_id": "thinking-d15-observed-v1",
+    "local_root": "kaggle/aymanmostafa11__eeg-motor-imagery-bciciv-2a",
+    "repo_id": "madteam/thinking-d15",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Kaggle aymanmostafa11/eeg-motor-imagery-bciciv-2a",
+    "provenance_references": [
+      "https://www.kaggle.com/datasets/aymanmostafa11/eeg-motor-imagery-bciciv-2a"
+    ],
+    "expected_source_files": null,
+    "expected_source_bytes": 169188124,
+    "observed_local_files": 11,
+    "observed_local_bytes": 429697416,
+    "license_note": "CC0-1.0 according to Kaggle data card. Full-raw package uses a distinct repository from the existing canonical CSV release",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "other",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D16": {
+    "dataset_id": "D16",
+    "name": "PhysioNet EEG Motor Movement Imagery",
+    "release_id": "thinking-d16-observed-v1",
+    "local_root": "kaggle/gamalasran__physionet-eeg-motor-movement-imagery",
+    "repo_id": "madteam/thinking-d16",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Kaggle mirror of PhysioNet EEGMMIDB",
+    "provenance_references": [
+      "https://www.kaggle.com/datasets/gamalasran/physionet-eeg-motor-movement-imagery",
+      "https://physionet.org/content/eegmmidb/1.0.0/"
+    ],
+    "expected_source_files": null,
+    "expected_source_bytes": 2009033556,
+    "observed_local_files": 3060,
+    "observed_local_bytes": 3614968037,
+    "license_note": "ODC-By according to data card; cite original PhysioNet and BCI2000 sources; card is not independent redistribution evidence",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "other",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D17": {
+    "dataset_id": "D17",
+    "name": "Muse2 Motor Imagery",
+    "release_id": "thinking-d17-observed-v1",
+    "local_root": "kaggle/muhammadatefelkaffas__eeg-muse2-motor-imagery-brain-electrical-activity",
+    "repo_id": "madteam/thinking-d17",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Kaggle muhammadatefelkaffas/eeg-muse2-motor-imagery-brain-electrical-activity",
+    "provenance_references": [
+      "https://www.kaggle.com/datasets/muhammadatefelkaffas/eeg-muse2-motor-imagery-brain-electrical-activity"
+    ],
+    "expected_source_files": null,
+    "expected_source_bytes": 177883265,
+    "observed_local_files": 31,
+    "observed_local_bytes": 2949832535,
+    "license_note": "MIT according to Kaggle data card; card is not independent redistribution evidence",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "other",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D18": {
+    "dataset_id": "D18",
+    "name": "Tsinghua SSVEP Benchmark",
+    "release_id": "thinking-d18-observed-v1",
+    "local_root": "tsinghua/benchmark_35_subjects",
+    "repo_id": "madteam/thinking-d18",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Tsinghua BCI Laboratory",
+    "provenance_references": [
+      "https://bci.med.tsinghua.edu.cn/download.html"
+    ],
+    "expected_source_files": 36,
+    "expected_source_bytes": 3695408933,
+    "observed_local_files": 36,
+    "observed_local_bytes": 3695408933,
+    "license_note": "Official laboratory download; laboratory terms have not been independently recorded for this family release",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "unknown",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  },
+  "D19": {
+    "dataset_id": "D19",
+    "name": "BETA SSVEP Database",
+    "release_id": "thinking-d19-observed-v1",
+    "local_root": "tsinghua/beta_70_subjects",
+    "repo_id": "madteam/thinking-d19",
+    "provider": "huggingface",
+    "scope_status": "observed-local-package",
+    "visibility": "blocked",
+    "source": "Tsinghua BCI Laboratory",
+    "provenance_references": [
+      "https://bci.med.tsinghua.edu.cn/download.html"
+    ],
+    "expected_source_files": 9,
+    "expected_source_bytes": 3122423061,
+    "observed_local_files": 9,
+    "observed_local_bytes": 3122423061,
+    "license_note": "Official laboratory download; laboratory terms have not been independently recorded for this family release",
+    "governance": {
+      "visibility": "blocked",
+      "license_status": "unknown",
+      "dua_status": "unknown",
+      "custodian_status": "unknown",
+      "deidentification_status": "not_reviewed",
+      "approved_by": "",
+      "evidence_reference": ""
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "modality": "image",
+  "intent": {
+    "value": "modify",
+    "confidence": 0.94,
+    "provenance": ["p300:trial_42"]
+  },
+  "subject": {
+    "concept_id": "design:LivingRoom",
+    "label": "living room",
+    "confidence": 0.91,
+    "provenance": ["ssvep:trial_17"]
+  },
+  "attributes": [
+    {
+      "concept_id": "design:Openness",
+      "operator": "increase",
+      "value": null,
+      "confidence": 0.78,
+      "status": "accepted",
+      "provenance": ["eeg:epoch_00841"]
+    },
+    {
+      "concept_id": "design:NaturalLight",
+      "operator": "increase",
+      "value": null,
+      "confidence": 0.72,
+      "status": "suggested",
+      "provenance": ["kg:edge:window_light"]
+    }
+  ],
+  "constraints": {
+    "required": ["preserve room geometry"],
+    "forbidden": ["high decoration density"]
+  },
+  "kg": {
+    "ontology_version": "interior-v1.0",
+    "subgraph_id": "sg:9f84"
+  }
+}

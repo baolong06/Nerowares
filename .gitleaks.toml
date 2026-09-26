@@ -1,0 +1,15 @@
+title = "THINKING EEG secret-scanning policy"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Test fixtures and documented placeholder identifiers only"
+paths = [
+  '''(^|/)tests/''',
+  '''(^|/)reports/''',
+]
+regexes = [
+  '''dev-only-change-me''',
+  '''THINKING_ALLOW_DEV_SECRET''',
+]

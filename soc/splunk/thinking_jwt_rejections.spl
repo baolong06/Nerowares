@@ -1,0 +1,5 @@
+index=thinking_eeg event_type=api_request status=401
+| bin _time span=5m
+| stats count values(correlation_id) AS correlation_ids by _time, src_ip, user_sub
+| where count > 20
+| eval severity="high", action="Review source IP, block abusive client, rotate affected JWT secret if compromise is suspected."

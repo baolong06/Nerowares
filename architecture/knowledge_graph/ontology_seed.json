@@ -1,0 +1,53 @@
+{
+  "ontology_version": "interior-v1.0",
+  "namespace": "design",
+  "nodes": [
+    {"id": "design:LivingRoom", "type": "Object", "label": "living room"},
+    {"id": "design:Bedroom", "type": "Object", "label": "bedroom"},
+    {"id": "design:Office", "type": "Object", "label": "office"},
+    {"id": "design:Window", "type": "Object", "label": "window"},
+    {"id": "design:Openness", "type": "Attribute", "label": "openness"},
+    {"id": "design:NaturalLight", "type": "Attribute", "label": "natural light"},
+    {"id": "design:DecorationDensity", "type": "Attribute", "label": "decoration density"},
+    {"id": "design:Minimalism", "type": "Style", "label": "minimal"},
+    {"id": "design:Modern", "type": "Style", "label": "modern"},
+    {"id": "design:Classical", "type": "Style", "label": "classical"},
+    {"id": "design:Increase", "type": "Action", "label": "increase"},
+    {"id": "design:Decrease", "type": "Action", "label": "decrease"},
+    {"id": "design:Preserve", "type": "Action", "label": "preserve"},
+    {"id": "modality:Image", "type": "Modality", "label": "image"}
+  ],
+  "edges": [
+    {
+      "id": "edge:window_light",
+      "source": "design:Window",
+      "relation": "INCREASES",
+      "target": "design:NaturalLight",
+      "confidence": 1.0,
+      "provenance": "expert_rule:window_light_v1"
+    },
+    {
+      "id": "edge:minimal_density",
+      "source": "design:Minimalism",
+      "relation": "CONFLICTS_WITH",
+      "target": "design:DecorationDensity",
+      "qualifier": {"operator": "increase", "level": "high"},
+      "confidence": 0.9,
+      "provenance": "expert_rule:minimal_density_v1"
+    },
+    {
+      "id": "edge:openness_light",
+      "source": "design:Openness",
+      "relation": "RELATED_TO",
+      "target": "design:NaturalLight",
+      "confidence": 0.8,
+      "provenance": "expert_rule:openness_light_v1"
+    }
+  ],
+  "synonyms": [
+    {"surface": "open", "concept_id": "design:Openness"},
+    {"surface": "airy", "concept_id": "design:Openness"},
+    {"surface": "sunlight", "concept_id": "design:NaturalLight"},
+    {"surface": "minimalist", "concept_id": "design:Minimalism"}
+  ]
+}

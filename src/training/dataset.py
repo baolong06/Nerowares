@@ -17,7 +17,7 @@ from src.preprocessing.io import safe_resolve
 def _discover_data_root() -> Path:
     env = os.environ.get("THINKING_DATA_ROOT")
     if env:
-        return Path(env)
+        return Path(env).expanduser().resolve()
     worktree = Path(__file__).resolve().parents[2] / "datasets"
     legacy = Path("E:/AI_thucchien/THINKING/datasets")
     if worktree.exists():
@@ -87,8 +87,9 @@ def _block_downsample(eeg: np.ndarray, n_times: int) -> np.ndarray:
     return pooled
 
 
-def d05_parquet_shards(directory: Path = D05_DIR) -> list[Path]:
+def d05_parquet_shards(directory: Path | None = None) -> list[Path]:
     """Return D05 training shards that reside below an approved data root."""
+    directory = directory or D05_DIR
     if not directory.exists():
         return []
     return [safe_resolve(path) for path in sorted(directory.glob("train-*.parquet"))]

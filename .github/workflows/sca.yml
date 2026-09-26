@@ -36,7 +36,10 @@ jobs:
           python -m pip install -r artifacts/ci-requirements.txt
 
       - name: Compile check
-        run: python -m py_compile src/config.py src/config_vault.py src/api/mfa.py src/api/security.py src/api/ratelimit.py src/api/shared_state.py src/data/manifest.py src/data/source.py src/data/huggingface.py src/data/catalog.py src/data/resolve.py src/data/release/*.py scripts/dataset_release.py scripts/check_cve.py scripts/check_secrets.py scripts/generate_sbom.py scripts/dataset_verify.py scripts/dataset_download.py scripts/dataset_info.py
+        run: python -m py_compile src/config.py src/config_vault.py src/api/mfa.py src/api/security.py src/api/ratelimit.py src/api/shared_state.py src/data/manifest.py src/data/source.py src/data/huggingface.py src/data/catalog.py src/data/resolve.py src/data/release/*.py scripts/dataset_release.py scripts/check_cve.py scripts/check_secrets.py scripts/generate_sbom.py scripts/create_sample_data.py scripts/dataset_verify.py scripts/dataset_download.py scripts/dataset_info.py
+
+      - name: Validate bundled sample data
+        run: python scripts/create_sample_data.py --check
 
       - name: Generate declared SBOM
         run: python scripts/generate_sbom.py --mode declared --output artifacts/sbom-declared.cdx.json

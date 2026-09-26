@@ -147,6 +147,54 @@ def test_huggingface_source_downloads_and_verifies_shards(tmp_path):
     assert calls[0]["local_files_only"] is False
 
 
+def test_committed_sample_data_contract_checks_pass():
+    from scripts import create_sample_data
+
+    create_sample_data.check_d05_sample()
+    create_sample_data.check_bciciv2a_sample()
+
+
+def test_committed_sample_data_loads_d05_parquet(monkeypatch):
+    from src.training import dataset as dataset_mod
+
+    root = Path("sample_data").resolve()
+    monkeypatch.setenv("THINKING_DATA_ROOT", str(root))
+    monkeypatch.setattr(dataset_mod, "DATA_ROOT", root)
+    monkeypatch.setattr(dataset_mod, "D05_DIR", root / "huggingface" / "EEG-semantic-text-relevance" / "data")
+
+    data = dataset_mod.load_d05(max_rows=32, n_times=32, label_field="topic", max_shards=1)
+
+    assert data.source == "d05:topic"
+    assert data.epochs.shape == (32, 32, 32)
+    assert len(set(data.subject_ids)) >= 4
+    assert len(set(data.session_ids)) >= 1
+    assert set(data.labels) >= {"open", "window", "left", "right"}
+
+
+def test_committed_sample_data_loads_bciciv2a_csv(monkeypatch):
+    from src.training import dataset as dataset_mod
+
+    root = Path("sample_data").resolve()
+    monkeypatch.setenv("THINKING_DATA_ROOT", str(root))
+    monkeypatch.setattr(dataset_mod, "DATA_ROOT", root)
+    monkeypatch.setattr(dataset_mod, "BCICIV2A_DIR", root / "kaggle" / "aymanmostafa11__eeg-motor-imagery-bciciv-2a")
+    monkeypatch.setattr(dataset_mod, "BCICIV2A_CSV", dataset_mod.BCICIV2A_DIR / "BCICIV_2a_all_patients.csv")
+
+    data = dataset_mod.load_bciciv2a_epochs(
+        max_epochs=8,
+        n_times=32,
+        n_channels=8,
+        use_autoreject=False,
+        use_ica=False,
+    )
+
+    assert data.source == "bciciv2a:mi4"
+    assert data.epochs.shape == (8, 8, 32)
+    assert len(set(data.subject_ids)) >= 4
+    assert set(data.labels) >= {"left", "right", "foot", "tongue"}
+    assert all(item["source_file"] == "BCICIV_2a_all_patients.csv" for item in data.metadata)
+
+
 def test_bciciv2a_loader_accepts_huggingface_blob_without_csv_suffix(tmp_path):
     from src.data.huggingface import HuggingFaceDatasetSource
     from src.training.dataset import _BCICIV2A_EEG_COLUMNS, load_bciciv2a_epochs

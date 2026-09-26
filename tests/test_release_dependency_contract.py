@@ -31,6 +31,7 @@ def test_sca_installs_declared_dependencies_without_auditing_local_package():
     assert 'HF_HUB_OFFLINE: "1"' in text
     assert 'TRANSFORMERS_OFFLINE: "1"' in text
     assert 'python scripts/generate_sbom.py --mode declared --output artifacts/sbom-declared.cdx.json' in text
+    assert "scripts/create_sample_data.py" in text
     assert text.index("Generate declared SBOM") < text.index("Pytest (full regression, no raw dataset download)")
 
 

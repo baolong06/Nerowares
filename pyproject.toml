@@ -18,6 +18,7 @@ dev = [
     "pytest==8.3.4",
     "pytest-asyncio==0.24.0",
     "httpx==0.28.1",
+    "scikit-learn==1.5.2",
 ]
 ml = [
     "torch>=2.10.0",
@@ -36,6 +37,7 @@ security = [
     "pip-audit==2.10.1",
     "redis==5.0.8",
     "reportlab==5.0.1",
+    "cryptography==49.0.0",
 ]
 data = [
     "huggingface_hub==0.36.2",

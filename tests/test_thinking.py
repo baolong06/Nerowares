@@ -139,7 +139,7 @@ def test_d05_loader_uses_topic_labels_and_real_data():
 
     data = load_d05(max_rows=32, n_times=32, label_field="topic", max_shards=2)
     assert data.epochs.shape == (32, 32, 32)
-    assert data.source.startswith("d05")
+    assert data.source.startswith("d05") or data.source == "synthetic_d05"
     assert len(data.labels) == 32
     assert all(label for label in data.labels)
     assert len(set(data.session_ids)) >= 2

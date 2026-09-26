@@ -7,6 +7,7 @@ from src.anchors.encoder import label_template
 from src.anchors.eval import operating_k
 from src.training.dataset import (
     BRENNAN_DIR,
+    BUNDLED_BRENNAN_PROTOCOL,
     BRENNAN_PROTOCOL,
     LabeledEpochs,
     _bids_ids,
@@ -85,8 +86,7 @@ def test_select_diverse_edfs_spans_subjects_and_sessions():
 
 
 def test_brennan_protocol_contract():
-    if not BRENNAN_PROTOCOL.exists():
-        pytest.skip("Brennan protocol fixture is not available")
+    assert BUNDLED_BRENNAN_PROTOCOL.exists()
     protocol = _load_brennan_protocol()
     primary = protocol["cohort"]["primary_subjects"]
     analyzed = protocol["cohort"]["analyzed_yes"]

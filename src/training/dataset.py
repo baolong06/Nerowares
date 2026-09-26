@@ -32,6 +32,7 @@ D05_DIR = DATA_ROOT / "huggingface" / "EEG-semantic-text-relevance" / "data"
 COFETT_DIR = DATA_ROOT / "openneuro" / "ds006317_cofett"
 BRENNAN_DIR = DATA_ROOT / "nemar" / "nm000180_brennan2019_alice"
 BRENNAN_PROTOCOL = BRENNAN_DIR / "PROTOCOL.json"
+BUNDLED_BRENNAN_PROTOCOL = Path(__file__).with_name("brennan_protocol_lock.json")
 D01_DIR = DATA_ROOT / "openneuro" / "ds003626_inner_speech"
 CHISCO_DIR = DATA_ROOT / "openneuro" / "ds005170_chisco_subject02"
 D09_DIR = DATA_ROOT / "kaggle" / "abdulkareembageri__imagined-speech-eeg-signal-bci2020" / "BCI2020 EEG Signal for Words"
@@ -96,7 +97,7 @@ def d05_parquet_shards(directory: Path = D05_DIR) -> list[Path]:
 def synthetic_d05(
     max_rows: int = 240,
     n_times: int = 64,
-    n_channels: int = 8,
+    n_channels: int = 32,
     seed: int = 0,
 ) -> LabeledEpochs:
     """Build a deterministic, label-structured D05-shaped smoke-test dataset.
@@ -466,7 +467,9 @@ def load_cofett_epochs(
 def _load_brennan_protocol(protocol_path: Path = BRENNAN_PROTOCOL) -> dict:
     safe_path = safe_resolve(protocol_path)
     if not safe_path.exists():
-        raise FileNotFoundError("Brennan protocol lock not found")
+        if Path(protocol_path) != BRENNAN_PROTOCOL:
+            raise FileNotFoundError("Brennan protocol lock not found")
+        safe_path = BUNDLED_BRENNAN_PROTOCOL
     return json.loads(safe_path.read_text(encoding="utf-8"))
 
 

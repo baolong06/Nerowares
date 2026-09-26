@@ -1,0 +1,174 @@
+{
+  "protocol_id": "brennan-alice-eval-v1",
+  "locked_at": "2026-09-21",
+  "dataset": {
+    "name": "Brennan & Hale 2019 Alice in Wonderland EEG",
+    "nemar_id": "nm000180",
+    "doi": "10.82901/nemar.nm000180",
+    "license": "CC BY 4.0",
+    "local_root": "E:/AI_thucchien/THINKING/datasets/nemar/nm000180_brennan2019_alice",
+    "bids_version_eeg": "v1.0.0",
+    "events_source": "GitHub nemarDatasets/nm000180 main and v1.1.3 (SHA-identical events/participants/build_events)",
+    "story_csv_source": "cnllab/alice-eeg-shared preprocessing/AliceChapterOne-EEG.csv",
+    "sfreq_hz": 500.0,
+    "task": "alicelistening",
+    "stimulus": "Chapter 1 Alice's Adventures in Wonderland, 12 WAV segments, shared across subjects",
+    "not_inner_speech": true
+  },
+  "cohort": {
+    "primary_name": "analyzed_yes_full_2129",
+    "primary_n": 27,
+    "primary_subjects": [
+      "sub-001", "sub-003", "sub-005", "sub-006", "sub-008", "sub-010",
+      "sub-011", "sub-012", "sub-013", "sub-014", "sub-015", "sub-017",
+      "sub-018", "sub-019", "sub-020", "sub-021", "sub-022", "sub-025",
+      "sub-037", "sub-038", "sub-039", "sub-040", "sub-041", "sub-042",
+      "sub-044", "sub-045", "sub-048"
+    ],
+    "analyzed_yes_n": 31,
+    "analyzed_yes": [
+      "sub-001", "sub-003", "sub-005", "sub-006", "sub-008", "sub-010",
+      "sub-011", "sub-012", "sub-013", "sub-014", "sub-015", "sub-017",
+      "sub-018", "sub-019", "sub-020", "sub-021", "sub-022", "sub-025",
+      "sub-026", "sub-034", "sub-035", "sub-036", "sub-037", "sub-038",
+      "sub-039", "sub-040", "sub-041", "sub-042", "sub-044", "sub-045",
+      "sub-048"
+    ],
+    "analyzed_yes_partial": [
+      {"subject": "sub-026", "n_events": 1981, "missing_sentences": [80, 81, 82, 83, 84], "missing_segments": [12]},
+      {"subject": "sub-034", "n_events": 1982, "missing_sentences": [80, 81, 82, 83, 84], "missing_segments": [12]},
+      {"subject": "sub-035", "n_events": 1976, "missing_sentences": [80, 81, 82, 83, 84], "missing_segments": [12]},
+      {"subject": "sub-036", "n_events": 1979, "missing_sentences": [80, 81, 82, 83, 84], "missing_segments": [12]}
+    ],
+    "events_available_n": 39,
+    "eeg_without_events": ["sub-028", "sub-029", "sub-031", "sub-033", "sub-046", "sub-047"],
+    "excluded_analyzed_no": {
+      "sub-002": "high_noise",
+      "sub-007": "low_comprehension",
+      "sub-009": "low_comprehension",
+      "sub-023": "low_comprehension",
+      "sub-027": "low_comprehension",
+      "sub-028": "high_noise",
+      "sub-029": "high_noise",
+      "sub-030": "low_comprehension",
+      "sub-031": "high_noise",
+      "sub-032": "low_comprehension",
+      "sub-033": "high_noise",
+      "sub-043": "low_comprehension",
+      "sub-046": "low_comprehension_and_high_noise",
+      "sub-047": "low_comprehension_and_high_noise"
+    },
+    "original_scores_not_in_this_bids": ["S04", "S16", "S24", "S49"],
+    "rules": [
+      "Primary scientific cohort is the 27 analyzed=yes subjects with 2129 word events.",
+      "Do not expand the headline result to 31 until the 27-subject baseline is reported.",
+      "The 4 partial analyzed subjects may appear only in a labeled sensitivity table; they lack segment 12 / sentences 80-84.",
+      "The 39 events-available set is a sensitivity set, not the Brennan-analyzed cohort.",
+      "The 6 EEG recordings without events cannot be decoded.",
+      "Do not mix excluded high_noise/low_comprehension subjects into the primary cohort."
+    ]
+  },
+  "task": {
+    "name": "sentence_retrieval_2to5s",
+    "closed_set_size": 29,
+    "metric": "retrieval Top-1 and operating_k Top-k against sentence text embeddings",
+    "operating_k": 5,
+    "chance_top1": 0.034482758620689655,
+    "chance_top5": 0.1724137931034483,
+    "forbidden_primary_task": "word-level closed-set classification over 601 lowercased types",
+    "epoching": {
+      "unit": "sentence",
+      "tmin_s": -0.2,
+      "tmax_rule": "min(sentence_end - sentence_start, 5.0)",
+      "do_not_use_exclusive_word_duration_windows": true,
+      "reason": "median inter-word gap on sub-001 is -0.00185 s; ~1160 overlapping word-duration windows"
+    },
+    "channel_policy": "use EEG channels only; drop VEOG and AUD/Aux5",
+    "preprocess": "native-rate FIR 1-40 Hz before epoch and downsample; Autoreject/ICA with real sfreq/highpass",
+    "label_normalization": "join words on space; map SUB (U+001A) and curly apostrophes to ASCII apostrophe",
+    "encoding_defect": "sentence_id 65 word 2 on events.tsv is U+001A + 's' (likely it's); normalize before embedding",
+    "sentences": [
+      {"sentence_id": 3, "segment": 1, "n_words": 6, "duration_s": 2.891197, "text": "thought Alice without pictures or conversation"},
+      {"sentence_id": 5, "segment": 1, "n_words": 11, "duration_s": 3.981538, "text": "when suddenly a White Rabbit with pink eyes ran close by"},
+      {"sentence_id": 7, "segment": 1, "n_words": 8, "duration_s": 2.185265, "text": "that she ought to have wondered at this"},
+      {"sentence_id": 9, "segment": 2, "n_words": 11, "duration_s": 3.983712, "text": "and burning with curiosity she ran across the field after it"},
+      {"sentence_id": 14, "segment": 3, "n_words": 14, "duration_s": 3.493961, "text": "First she tried to look down and make out what she was coming to"},
+      {"sentence_id": 18, "segment": 3, "n_words": 16, "duration_s": 4.338042, "text": "but to her great disappointment it was empty she did not like to drop the jar"},
+      {"sentence_id": 21, "segment": 3, "n_words": 15, "duration_s": 4.183417, "text": "even if I fell off the top of the house Which was very likely TRUE"},
+      {"sentence_id": 23, "segment": 4, "n_words": 10, "duration_s": 2.374332, "text": "must be getting somewhere near the center of the earth"},
+      {"sentence_id": 25, "segment": 4, "n_words": 9, "duration_s": 2.174739, "text": "still it was good practice to say it over"},
+      {"sentence_id": 32, "segment": 5, "n_words": 14, "duration_s": 4.000262, "text": "it ll never do to ask perhaps I shall see it written up somewhere"},
+      {"sentence_id": 33, "segment": 5, "n_words": 9, "duration_s": 3.798364, "text": "Down down down There was nothing else to do"},
+      {"sentence_id": 35, "segment": 5, "n_words": 12, "duration_s": 2.863955, "text": "I hope they ll remember her saucer of milk at tea time"},
+      {"sentence_id": 38, "segment": 5, "n_words": 9, "duration_s": 2.635655, "text": "you see as she could nt answer either question"},
+      {"sentence_id": 39, "segment": 5, "n_words": 10, "duration_s": 2.062745, "text": "it did nt much matter which way she put it"},
+      {"sentence_id": 43, "segment": 6, "n_words": 10, "duration_s": 2.683878, "text": "and the White Rabbit was still in sight hurrying down"},
+      {"sentence_id": 54, "segment": 8, "n_words": 11, "duration_s": 3.148337, "text": "I think I could if I only know how to begin"},
+      {"sentence_id": 56, "segment": 8, "n_words": 12, "duration_s": 2.901560, "text": "There seemed to be no use in waiting by the little door"},
+      {"sentence_id": 60, "segment": 8, "n_words": 14, "duration_s": 3.489301, "text": "but the wise little Alice was not going to do that in a hurry"},
+      {"sentence_id": 63, "segment": 9, "n_words": 15, "duration_s": 4.097273, "text": "and that if you cut your finger very deeply with a knife it usually bleeds"},
+      {"sentence_id": 64, "segment": 9, "n_words": 15, "duration_s": 4.109422, "text": "and she had never forgotten that if you drink much from a bottle marked poison"},
+      {"sentence_id": 65, "segment": 9, "n_words": 11, "duration_s": 3.132707, "text": "it's almost certain to disagree with you sooner or later"},
+      {"sentence_id": 68, "segment": 10, "n_words": 18, "duration_s": 4.944802, "text": "First however she waited for a few minutes to see if she was going to shrink any further"},
+      {"sentence_id": 69, "segment": 10, "n_words": 13, "duration_s": 4.239295, "text": "she felt a little nervous about this for it might end you know"},
+      {"sentence_id": 71, "segment": 10, "n_words": 19, "duration_s": 4.576870, "text": "And she tried to fancy what the flame of a candle is like after the candle is blown out"},
+      {"sentence_id": 72, "segment": 10, "n_words": 11, "duration_s": 2.935129, "text": "for she could not remember having ever seen such a thing"},
+      {"sentence_id": 75, "segment": 11, "n_words": 15, "duration_s": 3.369367, "text": "and she tried her best to climb up one of the legs of the table"},
+      {"sentence_id": 76, "segment": 11, "n_words": 14, "duration_s": 4.433367, "text": "but it was too slippery and when she had tired herself out with trying"},
+      {"sentence_id": 80, "segment": 12, "n_words": 15, "duration_s": 3.961272, "text": "Soon her eye fell on a little glass box that was lying under the table"},
+      {"sentence_id": 84, "segment": 12, "n_words": 10, "duration_s": 2.963708, "text": "to be sure this generally happens when one eats cake"}
+    ],
+    "sentences_by_segment": {
+      "1": [3, 5, 7],
+      "2": [9],
+      "3": [14, 18, 21],
+      "4": [23, 25],
+      "5": [32, 33, 35, 38, 39],
+      "6": [43],
+      "7": [],
+      "8": [54, 56, 60],
+      "9": [63, 64, 65],
+      "10": [68, 69, 71, 72],
+      "11": [75, 76],
+      "12": [80, 84]
+    }
+  },
+  "splits": {
+    "no_random_epoch_split": true,
+    "no_fabricated_sessions": true,
+    "session_note": "Each subject has one continuous recording. session_id may be labeled {subject}_run-01 but MUST NOT be used as a cross-session fold.",
+    "report_separately": true,
+    "controls": ["real_eeg", "shuffled_label", "temporal_shuffle", "gaussian_noise", "no_eeg_lm_only"],
+    "protocol_A_loso_same_stimulus": {
+      "name": "LOSO-same-stimulus",
+      "folds": 27,
+      "holdout": "one subject per fold",
+      "train": "remaining primary-cohort subjects, all 29 sentences",
+      "what_it_measures": "cross-subject generalization to the same Alice chapter-1 stimulus, not zero-shot semantics",
+      "sensitivity_31": "optional extra table; partial subjects omit sentences 80 and 84"
+    },
+    "protocol_B_stimulus_block": {
+      "name": "stimulus-block holdout",
+      "held_out_segments": [10, 11, 12],
+      "test_sentence_ids": [68, 69, 71, 72, 75, 76, 80, 84],
+      "train_sentence_ids": [3, 5, 7, 9, 14, 18, 21, 23, 25, 32, 33, 35, 38, 39, 43, 54, 56, 60, 63, 64, 65],
+      "n_train_sentences": 21,
+      "n_test_sentences": 8,
+      "temporal_buffer_s": 1.0,
+      "buffer_rule": "Drop any train epoch whose [onset - 1.0, offset + 1.0] overlaps a held-out sentence window.",
+      "what_it_measures": "generalization to unseen story time / unseen sentences under the same listeners",
+      "partial_subjects": "Exclude sub-026/034/035/036 from this protocol because they lack segment 12 test items 80 and 84.",
+      "sensitivity_hold_11_12_only": {
+        "held_out_segments": [11, 12],
+        "test_sentence_ids": [75, 76, 80, 84],
+        "note": "thinner test set; not the primary block split"
+      }
+    },
+    "banned": [
+      "random split of epochs from the same recording into train and test",
+      "using word type identity as the primary metric",
+      "claiming cross-session results from a single continuous run",
+      "training on overlapping 1 s-buffered windows of held-out sentences"
+    ]
+  }
+}

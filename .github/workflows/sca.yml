@@ -25,17 +25,17 @@ jobs:
       - name: Compile check
         run: python -m py_compile src/config.py src/config_vault.py src/api/mfa.py src/api/security.py src/api/ratelimit.py src/api/shared_state.py src/data/manifest.py src/data/source.py src/data/huggingface.py src/data/catalog.py src/data/resolve.py src/data/release/*.py scripts/dataset_release.py scripts/check_cve.py scripts/check_secrets.py scripts/generate_sbom.py scripts/dataset_verify.py scripts/dataset_download.py scripts/dataset_info.py
 
-      - name: Pytest (full regression, no raw dataset download)
-        env:
-          HF_HUB_OFFLINE: "1"
-          TRANSFORMERS_OFFLINE: "1"
-        run: PYTHONPATH=. pytest -q
-
       - name: Generate declared SBOM
         run: python scripts/generate_sbom.py --mode declared --output artifacts/sbom-declared.cdx.json
 
       - name: Generate ambient SBOM
         run: python scripts/generate_sbom.py --mode ambient --output artifacts/sbom-ambient.cdx.json
+
+      - name: Pytest (full regression, no raw dataset download)
+        env:
+          HF_HUB_OFFLINE: "1"
+          TRANSFORMERS_OFFLINE: "1"
+        run: PYTHONPATH=. pytest -q
 
       - name: Upload SBOMs
         if: always()

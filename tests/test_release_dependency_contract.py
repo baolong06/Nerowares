@@ -19,6 +19,14 @@ def test_sca_installs_data_extra_and_keeps_offline_pytest():
     assert 'TRANSFORMERS_OFFLINE: "1"' in text
 
 
+def test_security_extra_includes_pdf_renderer_used_by_appsec_reports():
+    import tomllib
+
+    document = tomllib.loads(Path("pyproject.toml").read_text(encoding="utf-8"))
+    security = document["project"]["optional-dependencies"]["security"]
+    assert "reportlab==5.0.1" in security
+
+
 def test_declared_sbom_includes_exact_huggingface_hub(tmp_path):
     from scripts import generate_sbom
 

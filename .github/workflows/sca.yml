@@ -20,7 +20,7 @@ jobs:
       - name: Install project and SCA tools
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -e ".[dev,security,data]"
+          python -m pip install ".[dev,security,data]"
 
       - name: Compile check
         run: python -m py_compile src/config.py src/config_vault.py src/api/mfa.py src/api/security.py src/api/ratelimit.py src/api/shared_state.py src/data/manifest.py src/data/source.py src/data/huggingface.py src/data/catalog.py src/data/resolve.py src/data/release/*.py scripts/dataset_release.py scripts/check_cve.py scripts/check_secrets.py scripts/generate_sbom.py scripts/dataset_verify.py scripts/dataset_download.py scripts/dataset_info.py

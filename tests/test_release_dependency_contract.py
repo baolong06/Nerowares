@@ -14,7 +14,8 @@ def test_data_extra_uses_validated_exact_huggingface_version():
 
 def test_sca_installs_data_extra_and_keeps_offline_pytest():
     text = Path(".github/workflows/sca.yml").read_text(encoding="utf-8")
-    assert 'python -m pip install -e ".[dev,security,data]"' in text
+    assert 'python -m pip install ".[dev,security,data]"' in text
+    assert 'python -m pip install -e' not in text
     assert 'HF_HUB_OFFLINE: "1"' in text
     assert 'TRANSFORMERS_OFFLINE: "1"' in text
     assert 'python scripts/generate_sbom.py --mode declared --output artifacts/sbom-declared.cdx.json' in text

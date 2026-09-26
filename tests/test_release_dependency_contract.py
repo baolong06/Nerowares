@@ -34,6 +34,13 @@ def test_sca_installs_declared_dependencies_without_auditing_local_package():
     assert text.index("Generate declared SBOM") < text.index("Pytest (full regression, no raw dataset download)")
 
 
+def test_artifact_manifest_check_avoids_indented_shell_heredoc():
+    text = Path(".github/workflows/sca.yml").read_text(encoding="utf-8")
+    artifact_step = text.split("      - name: Artifact manifest signature check", 1)[1]
+    assert "python - <<'PY'" not in artifact_step
+    assert "python -c" in artifact_step
+
+
 def test_security_extra_includes_pdf_renderer_used_by_appsec_reports():
     import tomllib
 

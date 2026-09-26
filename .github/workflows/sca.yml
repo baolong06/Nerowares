@@ -83,16 +83,7 @@ jobs:
         run: |
           if [ -n "${THINKING_ARTIFACT_VERIFY_KEY:-}" ] && [ -f artifacts/bciciv2a-full/artifact_manifest.json ]; then
             printf '%s' "$THINKING_ARTIFACT_VERIFY_KEY" > /tmp/thinking-verify-key.pem
-            python - <<'PY'
-            import os
-            from pathlib import Path
-            from scripts.artifact_manifest import verify_manifest_signature
-            manifest = Path("artifacts/bciciv2a-full/artifact_manifest.json")
-            key = Path("/tmp/thinking-verify-key.pem").read_bytes()
-            if not verify_manifest_signature(manifest, key):
-                raise SystemExit("artifact manifest signature verification failed")
-            print("artifact manifest signature verified")
-            PY
+            python -c "from pathlib import Path; from scripts.artifact_manifest import verify_manifest_signature; manifest = Path('artifacts/bciciv2a-full/artifact_manifest.json'); key = Path('/tmp/thinking-verify-key.pem').read_bytes(); ok = verify_manifest_signature(manifest, key); print('artifact manifest signature verified' if ok else 'artifact manifest signature verification failed'); raise SystemExit(0 if ok else 1)"
           else
             echo "Verification key or generated manifest unavailable; artifact signing remains a release requirement"
           fi

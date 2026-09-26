@@ -12,9 +12,21 @@ def test_data_extra_uses_validated_exact_huggingface_version():
     assert document["project"]["optional-dependencies"]["data"] == ["huggingface_hub==0.36.2"]
 
 
-def test_sca_installs_data_extra_and_keeps_offline_pytest():
+def test_dev_extra_uses_pytest_stack_versions_without_declared_vulnerabilities():
+    import tomllib
+
+    document = tomllib.loads(Path("pyproject.toml").read_text(encoding="utf-8"))
+    dev = document["project"]["optional-dependencies"]["dev"]
+    assert "pytest==9.0.3" in dev
+    assert "pytest-asyncio==1.4.0" in dev
+
+
+def test_sca_installs_declared_dependencies_without_auditing_local_package():
     text = Path(".github/workflows/sca.yml").read_text(encoding="utf-8")
-    assert 'python -m pip install ".[dev,security,data]"' in text
+    assert 'for extra in ("dev", "security", "data"):' in text
+    assert "python -m pip install -r artifacts/ci-requirements.txt" in text
+    assert "python -m pip_audit -r artifacts/ci-requirements.txt --progress-spinner off --strict" in text
+    assert 'python -m pip install ".[dev,security,data]"' not in text
     assert 'python -m pip install -e' not in text
     assert 'HF_HUB_OFFLINE: "1"' in text
     assert 'TRANSFORMERS_OFFLINE: "1"' in text
@@ -35,7 +47,7 @@ def test_security_extra_includes_release_signing_crypto():
 
     document = tomllib.loads(Path("pyproject.toml").read_text(encoding="utf-8"))
     security = document["project"]["optional-dependencies"]["security"]
-    assert "cryptography==49.0.0" in security
+    assert "cryptography==50.0.0" in security
 
 
 def test_dev_extra_includes_semantic_retrieval_dependency_used_by_tests():

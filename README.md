@@ -2,7 +2,15 @@
 
 Nguồn mở cho team clone về chạy / train smoke ngay. Repo **không chứa 130GB raw EEG**; thay vào đó có `sample_data/` là bộ fixture rất nhỏ để kiểm tra loader, test và pipeline huấn luyện cơ bản.
 
-## Clone & chạy ngay với sample data
+## Hướng dẫn nhanh cho team
+
+Yêu cầu máy dev:
+
+- Git
+- Python 3.11
+- Internet chỉ để clone repo và cài package Python
+
+Các lệnh dưới đây dùng `sample_data/` có sẵn trong repo, **không tải raw EEG 130GB** và **không cần Hugging Face token**.
 
 ### Linux / macOS
 
@@ -18,8 +26,8 @@ export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
 export PYTHONPATH=.
 
-pytest -q
 python scripts/create_sample_data.py --check
+pytest -q
 python -m src.training.train --dataset d05 --max-rows 32 --n-times 32 --artifacts-dir artifacts/sample-d05
 python -c "from src.training.dataset import load_bciciv2a_epochs; d=load_bciciv2a_epochs(max_epochs=8,n_times=32,n_channels=8,use_autoreject=False,use_ica=False); print(d.epochs.shape, sorted(set(d.labels)))"
 uvicorn src.main:app --reload --port 8000
@@ -39,14 +47,21 @@ $env:HF_HUB_OFFLINE = "1"
 $env:TRANSFORMERS_OFFLINE = "1"
 $env:PYTHONPATH = "."
 
-pytest -q
 python scripts/create_sample_data.py --check
+pytest -q
 python -m src.training.train --dataset d05 --max-rows 32 --n-times 32 --artifacts-dir artifacts/sample-d05
 python -c "from src.training.dataset import load_bciciv2a_epochs; d=load_bciciv2a_epochs(max_epochs=8,n_times=32,n_channels=8,use_autoreject=False,use_ica=False); print(d.epochs.shape, sorted(set(d.labels)))"
 uvicorn src.main:app --reload --port 8000
 ```
 
-API docs: `http://localhost:8000/docs` khi chạy ở development và docs được bật.
+Sau khi chạy `uvicorn`, mở API docs tại: `http://localhost:8000/docs`.
+
+Kết quả mong đợi:
+
+- `python scripts/create_sample_data.py --check` in ra `sample data OK under sample_data`.
+- `pytest -q` pass toàn bộ test offline.
+- Lệnh train D05 lưu smoke artifact vào `artifacts/sample-d05/`.
+- Lệnh BCICIV2a in shape `(8, 8, 32)` và labels `['foot', 'left', 'right', 'tongue']`.
 
 ## Sample data đi kèm
 

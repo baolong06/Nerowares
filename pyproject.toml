@@ -41,6 +41,7 @@ security = [
 ]
 data = [
     "huggingface_hub==0.36.2",
+    "pyarrow>=23.0.1",
 ]
 
 [tool.pytest.ini_options]

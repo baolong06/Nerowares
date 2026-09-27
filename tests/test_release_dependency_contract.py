@@ -5,11 +5,13 @@ import json
 from pathlib import Path
 
 
-def test_data_extra_uses_validated_exact_huggingface_version():
+def test_data_extra_includes_validated_source_dependencies():
     import tomllib
 
     document = tomllib.loads(Path("pyproject.toml").read_text(encoding="utf-8"))
-    assert document["project"]["optional-dependencies"]["data"] == ["huggingface_hub==0.36.2"]
+    data = document["project"]["optional-dependencies"]["data"]
+    assert "huggingface_hub==0.36.2" in data
+    assert "pyarrow>=23.0.1" in data
 
 
 def test_dev_extra_uses_pytest_stack_versions_without_declared_vulnerabilities():
